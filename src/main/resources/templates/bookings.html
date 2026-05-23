@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>All Bookings</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#fff0f5;
+            padding:40px;
+        }
+
+        h1{
+            text-align:center;
+            color:#d63384;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th,td{
+            padding:15px;
+            border:1px solid #ddd;
+            text-align:center;
+        }
+
+        th{
+            background:#d63384;
+            color:white;
+        }
+
+        tr:nth-child(even){
+            background:#f9f9f9;
+        }
+        button{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Customer Bookings</h1>
+
+<table>
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Customer Name</th>
+
+        <th>Service</th>
+
+        <th>Amount</th>
+
+        <th>Actions</th>
+
+    </tr>
+
+    <tr th:each="customer : ${customers}">
+
+        <td th:text="${customer.id}"></td>
+
+        <td th:text="${customer.customerName}"></td>
+
+        <td th:text="${customer.service}"></td>
+
+        <td th:text="${customer.amount}"></td>
+
+        <<td>
+
+        <a th:href="@{/edit/{id}(id=${customer.id})}">
+
+            <button
+                    style="background:blue;color:white;"
+            >
+                Edit
+            </button>
+
+        </a>
+
+        <a th:href="@{/delete/{id}(id=${customer.id})}">
+
+            <button>
+
+                Delete
+
+            </button>
+
+        </a>
+
+    </td>
+
+    </tr>
+
+</table>
+
+</body>
+
+</html>

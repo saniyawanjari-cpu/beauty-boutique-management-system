@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Edit Booking</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#fff0f5;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:400px;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            margin-bottom:15px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#d63384;
+            color:white;
+            border:none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Edit Booking</h2>
+
+    <form action="/update" method="post">
+
+        <input
+                type="hidden"
+                name="id"
+                th:value="${customer.id}"
+        >
+
+        <input
+                type="text"
+                name="customerName"
+                th:value="${customer.customerName}"
+        >
+
+        <input
+                type="text"
+                name="service"
+                th:value="${customer.service}"
+        >
+
+        <input
+                type="text"
+                name="amount"
+                th:value="${customer.amount}"
+        >
+
+        <button type="submit">
+
+            Update Booking
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
