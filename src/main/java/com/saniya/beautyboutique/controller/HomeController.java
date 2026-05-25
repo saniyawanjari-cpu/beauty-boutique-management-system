@@ -1,15 +1,12 @@
 
 package com.saniya.beautyboutique.controller;
-import java.util.List;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import com.saniya.beautyboutique.entity.Customer;
 import com.saniya.beautyboutique.repository.CustomerRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
@@ -18,7 +15,6 @@ public class HomeController {
     CustomerRepository repo;
 
     @GetMapping("/")
-
     public String home(Model model) {
 
         long totalBookings = repo.count();
@@ -26,29 +22,17 @@ public class HomeController {
         double totalRevenue = 0;
 
         for(Customer c : repo.findAll()) {
-
-            totalRevenue += Double.parseDouble(
-                    c.getAmount()
-            );
+            totalRevenue += Double.parseDouble(c.getAmount());
         }
 
-        model.addAttribute(
-                "totalBookings",
-                totalBookings
-        );
-
-        model.addAttribute(
-                "totalRevenue",
-                totalRevenue
-        );
+        model.addAttribute("totalBookings", totalBookings);
+        model.addAttribute("totalRevenue", totalRevenue);
 
         return "index";
     }
 
     @PostMapping("/save")
-
-    public String saveCustomer(Customer customer,
-                               Model model) {
+    public String saveCustomer(Customer customer, Model model) {
 
         repo.save(customer);
 
@@ -57,11 +41,10 @@ public class HomeController {
                 "Appointment Saved Successfully"
         );
 
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/bookings")
-
     public String viewBookings(Model model) {
 
         model.addAttribute(
@@ -71,18 +54,16 @@ public class HomeController {
 
         return "bookings";
     }
-    @GetMapping("/delete/{id}")
 
-    public String deleteBooking(
-            @PathVariable Long id
-    ) {
+    @GetMapping("/delete/{id}")
+    public String deleteBooking(@PathVariable Long id) {
 
         repo.deleteById(id);
 
         return "redirect:/bookings";
     }
-    @GetMapping("/edit/{id}")
 
+    @GetMapping("/edit/{id}")
     public String editBooking(
             @PathVariable Long id,
             Model model
@@ -100,15 +81,10 @@ public class HomeController {
     }
 
     @PostMapping("/update")
-
-    public String updateBooking(
-            Customer customer
-    ) {
+    public String updateBooking(Customer customer) {
 
         repo.save(customer);
 
         return "redirect:/bookings";
     }
-
 }
-//isse bookings dikhegi
