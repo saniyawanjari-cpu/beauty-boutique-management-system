@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Admin Login</title>
+
+    <style>
+
+        body{
+
+            font-family:Arial;
+
+            background:linear-gradient(to right,#ffdde1,#ee9ca7);
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            height:100vh;
+
+        }
+
+        .login-box{
+
+            width:350px;
+
+            background:white;
+
+            padding:40px;
+
+            border-radius:20px;
+
+            box-shadow:0 0 20px rgba(0,0,0,0.2);
+
+        }
+
+        h1{
+
+            text-align:center;
+
+            color:#d63384;
+
+            margin-bottom:30px;
+
+        }
+
+        input{
+
+            width:100%;
+
+            padding:12px;
+
+            margin-bottom:20px;
+
+            border:1px solid #ccc;
+
+            border-radius:10px;
+
+        }
+
+        button{
+
+            width:100%;
+
+            padding:12px;
+
+            background:#d63384;
+
+            color:white;
+
+            border:none;
+
+            border-radius:10px;
+
+            cursor:pointer;
+
+        }
+
+        button:hover{
+
+            background:#b0256b;
+
+        }
+
+        .error{
+
+            color:red;
+
+            text-align:center;
+
+            margin-top:15px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h1>Admin Login</h1>
+
+    <form action="/login" method="post">
+
+        <input
+                type="text"
+                name="username"
+                placeholder="Enter Username"
+                required
+        >
+
+        <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required
+        >
+
+        <button type="submit">
+
+            Login
+
+        </button>
+
+    </form>
+
+    <p
+            class="error"
+            th:text="${error}">
+    </p>
+
+</div>
+
+</body>
+
+</html>
