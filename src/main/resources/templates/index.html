@@ -38,15 +38,18 @@
         .navbar{
 
             width:100%;
+
             display:flex;
+
             justify-content:space-between;
+
             align-items:center;
 
-            background:rgba(255,255,255,0.2);
+            background:rgba(255,255,255,0.25);
 
-            backdrop-filter:blur(10px);
+            backdrop-filter:blur(12px);
 
-            padding:18px 40px;
+            padding:20px 40px;
 
             border-radius:20px;
 
@@ -58,19 +61,32 @@
 
         .logo{
 
-            font-size:28px;
+            font-size:30px;
+
             font-weight:700;
+
             color:#d63384;
+
+        }
+
+        .nav-links{
+
+            display:flex;
+
+            gap:20px;
 
         }
 
         .nav-links a{
 
             text-decoration:none;
+
             color:#333;
-            margin-left:25px;
+
             font-size:17px;
+
             font-weight:500;
+
             transition:0.3s;
 
         }
@@ -84,9 +100,13 @@
         .main-container{
 
             display:flex;
+
             justify-content:center;
+
             align-items:flex-start;
+
             gap:40px;
+
             flex-wrap:wrap;
 
         }
@@ -94,7 +114,9 @@
         .stats{
 
             display:flex;
+
             flex-direction:column;
+
             gap:25px;
 
         }
@@ -111,15 +133,16 @@
 
             padding:30px;
 
-            box-shadow:0 10px 30px rgba(0,0,0,0.1);
-
             text-align:center;
+
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
 
         }
 
         .card h2{
 
-            color:#444;
+            color:#555;
+
             margin-bottom:15px;
 
         }
@@ -127,6 +150,7 @@
         .card h1{
 
             color:#d63384;
+
             font-size:42px;
 
         }
@@ -150,9 +174,12 @@
         .container h1{
 
             text-align:center;
+
             margin-bottom:30px;
+
             color:#d63384;
-            font-size:42px;
+
+            font-size:40px;
 
         }
 
@@ -160,6 +187,7 @@
         select{
 
             width:100%;
+
             padding:16px;
 
             margin-bottom:20px;
@@ -179,6 +207,7 @@
         button{
 
             width:100%;
+
             padding:16px;
 
             border:none;
@@ -204,15 +233,31 @@
         button:hover{
 
             background:#b0256b;
+
             transform:translateY(-2px);
+
+        }
+
+        .secondary-btn{
+
+            background:black;
+
+        }
+
+        .secondary-btn:hover{
+
+            background:#333;
 
         }
 
         .message{
 
             text-align:center;
+
             margin-top:20px;
+
             color:green;
+
             font-weight:600;
 
         }
@@ -222,6 +267,7 @@
             .main-container{
 
                 flex-direction:column;
+
                 align-items:center;
 
             }
@@ -229,7 +275,9 @@
             .stats{
 
                 flex-direction:row;
+
                 flex-wrap:wrap;
+
                 justify-content:center;
 
             }
@@ -245,12 +293,16 @@
 <div class="navbar">
 
     <div class="logo">
+
         Glow Beauty Boutique
+
     </div>
 
     <div class="nav-links">
 
         <a href="/">Home</a>
+
+        <a href="/login">Admin Login</a>
 
         <a href="/bookings">Bookings</a>
 
@@ -315,39 +367,37 @@
             </select>
 
             <input
-                    type="text"
+                    type="number"
                     name="amount"
                     placeholder="Enter Amount"
                     min="1"
                     required
             >
 
-            <a href="/login">
+            <button type="submit">
 
-                <button type="button">
+                Book Appointment
 
-                    Book Appointment
-
-                </button>
-
-            </a>
-
-            <a href="/bookings">
-
-                <button type="button">
-
-                    View All Bookings
-
-                </button>
-
-            </a>
-
-            <div
-                    class="message"
-                    th:text="${message}">
-            </div>
+            </button>
 
         </form>
+
+        <a href="/bookings">
+
+            <button
+                    class="secondary-btn"
+                    type="button">
+
+                View All Bookings
+
+            </button>
+
+        </a>
+
+        <div
+                class="message"
+                th:text="${message}">
+        </div>
 
     </div>
 
